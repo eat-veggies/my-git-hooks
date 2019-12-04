@@ -6,12 +6,12 @@ if [[ "$RB_STAGED_FILES" = "" ]]; then
   exit 0
 fi
 
-which rubocop &> /dev/null
+which bundle &> /dev/null
 if [[ "$?" == 1 ]]; then
-  echo "Please install Rubocop"
+  echo "No bundler, therefore no rubocop"
   exit 1
 fi
 
-rubocop -a "$RB_STAGED_FILES"
+bundle exec rubocop "$RB_STAGED_FILES"
 
 exit $?
